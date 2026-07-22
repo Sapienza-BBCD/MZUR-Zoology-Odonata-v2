@@ -1,0 +1,532 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anax imperator Leach, 1815</title>
+
+<style>
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    background: white;
+}
+
+/*
+ * Fixed upper band containing the Home icon and scientific name.
+ */
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    min-height: 105px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+    padding: 18px 70px 12px;
+}
+
+.home-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+h1 {
+    margin: 8px 0 0;
+    text-align: center;
+    font-style: italic;
+    color: #821a33;
+    font-size: 42px;
+}
+
+/*
+ * Scrollable central content.
+ */
+.scroll-area {
+    position: fixed;
+    top: 105px;
+    bottom: 92px;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.container {
+    width: min(1100px, 94%);
+    margin: auto;
+    text-align: center;
+    padding: 28px 10px 40px;
+    box-sizing: border-box;
+}
+
+.data-table {
+    width: 90%;
+    margin: 25px auto;
+    border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+    border: 1px solid #ddd;
+    padding: 9px;
+}
+
+.data-table th {
+    background: #f3f3f3;
+}
+
+.gallery-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 11px 22px;
+    background: #821a33;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.gallery-button:hover {
+    background: #c54c00;
+}
+
+/*
+ * Fixed lower band containing the institutional logos.
+ */
+.fixed-footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: white;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.06);
+    padding: 10px 24px;
+    box-sizing: border-box;
+}
+
+.logos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: min(1200px, 96%);
+    margin: 0 auto;
+}
+
+.logos img {
+    width: 150px;
+    max-height: 65px;
+    object-fit: contain;
+}
+
+@media (max-width: 700px) {
+
+    .fixed-header {
+        min-height: 90px;
+        padding: 14px 55px 10px;
+    }
+
+    .home-icon {
+        width: 34px;
+        height: 34px;
+        top: 16px;
+        left: 14px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .scroll-area {
+        top: 90px;
+        bottom: 80px;
+    }
+
+    .logos img {
+        width: 120px;
+        max-height: 52px;
+    }
+
+    .data-table {
+        width: 100%;
+        font-size: 14px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="fixed-header">
+
+    <a href="index.html">
+        <img src="home.png" alt="Home" class="home-icon">
+    </a>
+
+    <h1>Anax imperator Leach, 1815</h1>
+
+</header>
+
+<main class="scroll-area">
+
+    <div class="container">
+
+        <h2>Collection summary</h2>
+
+        <table class="data-table">
+
+            <tr>
+                <th>Continent</th>
+                <th>Country</th>
+                <th>Locality</th>
+                <th>Individuals</th>
+            </tr>
+
+            
+            <tr>
+                <td>Europe</td>
+                <td>France</td>
+                <td>Aleria, Fiume Tavignano</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>France</td>
+                <td>Landorthe, Alta Garonna</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Astroni (NA)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Campo Imperatore, Lago di Fugno (AQ)</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Castel Porziano (RM)</td>
+                <td>4</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Castel Porziano, Canale della Santola (RM)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Castel Porziano, Stagno del sughereto (RM)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Città della Pieve (PG)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Controguerra, Contrada Torretta (TE)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Fiume Candelaro, Ponte della strada Foggia - Manfredonia (FG)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Fossa di Paganica (AQ)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Isola di Capraia, Lo Stagnone</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Lago Baratz</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Lago Remmo (PZ)</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Lago di Albano</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Lago di Collepietro (AQ)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Licenza, Fiume Licenza, pozza al km 36 + 200 della ss 314 (RM)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Macchiatonda (RM)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Manfredonia, 5^ vasca del Lago Salso (FG)</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Melenduro, Torre dell&#39;Orso (LE)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Montebello (RM)</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Montelibretti (RM)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Pisciarelli (RM)</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Poggio San Lorenzo, Ponte Buida, Lago delle Mole (RI)</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Prata D&#39;Ansidonia, Lago del Castello (AQ)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Rocca di Mezzo, Lago del Sirente (AQ)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Rovine di Tharros (OR)</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Scansano, Località Pian d&#39;Orneto (GR)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Scanzano, Litorale Policoro (MT)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Scauri, Fiume Garigliano</td>
+                <td>3</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Sibari, Fiume Raganello presso il ponte SS106 (CS)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Sibari, Fosso a mare (CS)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Spelronga, Lago Lungo (LT)</td>
+                <td>3</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Terni Sabbione, Cave di ghiaia presso Lago Sant&#39;Angelo</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Torrente Celone (FG)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Ugento Marina (LE)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Ugento Marina, Vasca in località Il Morfio (LE)</td>
+                <td>6</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Ugento, Torrente San Giovanni, Canale della vasca murata (LE)</td>
+                <td>3</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Valle dell&#39;Inferno (RM)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Via Portuense, Pozza permanente tra Corviale e Ponte galeria (RM)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Villa Doria Pamphili (RM)</td>
+                <td>1</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Villasimius, Rio Foxi (CA)</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Villasimius, Rio Trotta (CA)</td>
+                <td>2</td>
+            </tr>
+            
+            <tr>
+                <td>Europe</td>
+                <td>Italy</td>
+                <td>Villasimius, Strada c/o Su Campus</td>
+                <td>1</td>
+            </tr>
+            
+
+        </table>
+
+        <a href="gallery_anax_imperator_leach_1815.html" class="gallery-button">
+            Open gallery (69 specimens)
+        </a>
+
+    </div>
+
+</main>
+
+<footer class="fixed-footer">
+
+    <div class="logos">
+        <img src="logo1.png" alt="Left Logo">
+        <img src="logo2.png" alt="Right Logo">
+    </div>
+
+</footer>
+
+</body>
+</html>
