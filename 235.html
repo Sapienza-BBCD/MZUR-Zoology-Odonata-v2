@@ -1,0 +1,797 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Chalcolestes viridis (Vander Linden, 1825)</title>
+
+    <style>
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #222;
+            background-color: #ffffff;
+        }
+
+        /*
+         * Fixed upper band containing the Home icon and record title.
+         */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            min-height: 105px;
+            background: white;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            padding: 18px 70px 12px;
+            box-sizing: border-box;
+        }
+
+        .home-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .title {
+            margin: 8px 0 0;
+            padding: 0 20px;
+            text-align: center;
+            font-size: 1.7rem;
+            color: #821a33;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        /*
+         * Only the specimen image and Darwin Core table scroll.
+         */
+        .scroll-area {
+            position: fixed;
+            top: 105px;
+            bottom: 92px;
+            left: 0;
+            right: 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .container {
+            width: min(1000px, 92%);
+            margin: 0 auto;
+            padding: 28px 0 40px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .specimen-image {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            max-height: 650px;
+            height: auto;
+            margin: 20px auto;
+            object-fit: contain;
+        }
+
+        .image-missing {
+            width: 80%;
+            margin: 25px auto;
+            padding: 35px 15px;
+            border: 1px dashed #aaa;
+            color: #666;
+        }
+
+        .data-table {
+            width: 100%;
+            margin: 25px 0;
+            border-collapse: collapse;
+            table-layout: fixed;
+            text-align: left;
+        }
+
+        .data-table th,
+        .data-table td {
+            border: 1px solid #d8d8d8;
+            padding: 10px;
+            overflow-wrap: anywhere;
+            vertical-align: top;
+        }
+
+        .data-table th {
+            width: 32%;
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .data-table tr:nth-child(even) td {
+            background-color: #fafafa;
+        }
+
+        /*
+         * Fixed lower band containing the institutional logos.
+         */
+        .fixed-footer {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+            background: white;
+            border-top: 1px solid #ddd;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.06);
+            padding: 10px 24px;
+            box-sizing: border-box;
+        }
+
+        .logo-container {
+            width: min(1200px, 96%);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            width: 110px;
+            max-height: 70px;
+            object-fit: contain;
+        }
+
+        a {
+            color: #075da8;
+        }
+
+        @media (max-width: 600px) {
+
+            .fixed-header {
+                min-height: 90px;
+                padding: 14px 55px 10px;
+            }
+
+            .home-icon {
+                width: 34px;
+                height: 34px;
+                top: 16px;
+                left: 14px;
+            }
+
+            .title {
+                font-size: 1.35rem;
+                padding: 0 10px;
+            }
+
+            .scroll-area {
+                top: 90px;
+                bottom: 80px;
+            }
+
+            .container {
+                width: 95%;
+            }
+
+            .logo {
+                width: 90px;
+                max-height: 55px;
+            }
+
+            .data-table,
+            .data-table tbody,
+            .data-table tr,
+            .data-table th,
+            .data-table td {
+                display: block;
+                width: auto;
+            }
+
+            .data-table tr {
+                margin-bottom: 12px;
+                border: 1px solid #d8d8d8;
+            }
+
+            .data-table th,
+            .data-table td {
+                border: none;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Fixed upper band -->
+    <header class="fixed-header">
+
+        <a href="index.html" aria-label="Home">
+
+            <img
+                src="home.png"
+                alt="Home"
+                class="home-icon"
+            >
+
+        </a>
+
+        <h1 class="italic title">
+            Chalcolestes viridis (Vander Linden, 1825)
+        </h1>
+
+    </header>
+
+    <!-- Scrollable specimen content -->
+    <main class="scroll-area">
+
+        <div class="container">
+
+            
+
+                <img
+                    src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_2712.jpg"
+                    alt="Chalcolestes viridis (Vander Linden, 1825)"
+                    class="specimen-image"
+                >
+
+            
+
+            <h2>Data</h2>
+
+            <table class="data-table">
+
+                <tbody>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Occurrence ID
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                MZURODOB00235
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Event date
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                1947-09-11 00:00:00
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Scientific name authorship
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                Vander Linden, 1825
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Scientific name
+                        </th>
+
+                        <td class="italic">
+
+                            
+
+                                Chalcolestes viridis (Vander Linden, 1825)
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Vernacular name
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                Willow Emerald Damselfly
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Kingdom
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                Animalia
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Phylum
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                Arthropoda
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Class
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                Insecta
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Order
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                Odonata
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Family
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                Lestidae
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Genus
+                        </th>
+
+                        <td class="italic">
+
+                            
+
+                                Lestes
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Specific epithet
+                        </th>
+
+                        <td class="italic">
+
+                            
+
+                                viridis
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Taxon rank
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                species
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Identified by
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                C. Consiglio
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Decimal latitude
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                41.95644
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Decimal longitude
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                12.455
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Coordinate uncertainty
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                1000
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Continent
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                Europe
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Country
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                Italy
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Country code
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                IT
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            State / Province
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                Lazio
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Locality
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                Monte Mario, Acqua Traversa (RM)
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Sex
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                female
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Individual count
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                1
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                    <tr>
+
+                        <th scope="row">
+                            Life stage
+                        </th>
+
+                        <td class="">
+
+                            
+
+                                adult
+
+                            
+
+                        </td>
+
+                    </tr>
+
+                    
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+    <!-- Fixed lower band -->
+    <footer class="fixed-footer">
+
+        <div class="logo-container">
+
+            <img
+                src="logo1.png"
+                alt="Logo 1"
+                class="logo"
+            >
+
+            <img
+                src="logo2.png"
+                alt="Logo 2"
+                class="logo"
+            >
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
