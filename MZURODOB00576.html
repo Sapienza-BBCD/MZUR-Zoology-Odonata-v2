@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>MZURODOB00576</title>
+
+    <style>
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #222;
+            background-color: white;
+            overflow: hidden;
+        }
+
+        /*
+         * Fixed upper band containing the Home icon, occurrenceID,
+         * and scientific name.
+         */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: white;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            min-height: 118px;
+            padding: 14px 70px 12px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .home-icon {
+            width: 40px;
+            height: auto;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+        }
+
+        h1 {
+            color: #821a33;
+            font-size: 40px;
+            text-align: center;
+            margin: 0 0 8px;
+        }
+
+        h2 {
+            text-align: center;
+            font-style: italic;
+            color: darkgreen;
+            margin: 0;
+            font-size: 28px;
+        }
+
+        /*
+         * Only the central occurrence content scrolls.
+         */
+        .scroll-area {
+            position: fixed;
+            top: 118px;
+            bottom: 118px;
+            left: 0;
+            right: 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .container {
+            width: min(1150px, 94%);
+            margin: 0 auto;
+            padding: 24px 20px 40px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .specimen-image {
+            max-width: 90%;
+            max-height: 750px;
+            height: auto;
+            object-fit: contain;
+            margin: 20px auto 30px;
+            border: 1px solid #ddd;
+        }
+
+        .data-table {
+            width: min(1000px, 96%);
+            margin: 25px auto;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .data-table th,
+        .data-table td {
+            border: 1px solid #ddd;
+            padding: 9px 12px;
+            vertical-align: top;
+        }
+
+        .data-table th {
+            width: 32%;
+            background-color: #f3f3f3;
+            color: #821a33;
+        }
+
+        /*
+         * Fixed lower band containing navigation controls and institutional logos.
+         */
+        .fixed-footer {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+            background: white;
+            border-top: 1px solid #ddd;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.06);
+            padding: 8px 20px 10px;
+            box-sizing: border-box;
+        }
+
+        .footer-content {
+            width: min(1200px, 96%);
+            margin: 0 auto;
+        }
+
+        .logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logos img {
+            width: 178.5px;
+            max-height: 58px;
+            object-fit: contain;
+        }
+
+        .navigation {
+            margin: 0 0 8px;
+            text-align: center;
+        }
+
+        .navigation a {
+            display: inline-block;
+            margin: 6px;
+            padding: 10px 18px;
+            background-color: #821a33;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .navigation a:hover {
+            background-color: #c54c00;
+        }
+
+        .missing-image {
+            margin: 30px auto;
+            color: #821a33;
+            font-size: 18px;
+        }
+
+        @media (max-width: 700px) {
+            .fixed-header {
+                min-height: 108px;
+                padding: 12px 55px 10px;
+            }
+
+            .home-icon {
+                width: 34px;
+                top: 16px;
+                left: 14px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .scroll-area {
+                top: 108px;
+                bottom: 108px;
+            }
+
+            .logos img {
+                width: 125px;
+                max-height: 48px;
+            }
+
+            .navigation a {
+                padding: 8px 12px;
+                margin: 3px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Fixed upper band -->
+    <header class="fixed-header">
+
+        <img
+            src="home.png"
+            alt="Home"
+            class="home-icon"
+            onclick="location.href='index.html'"
+        />
+
+        <h1>MZURODOB00576</h1>
+
+        <h2>Ischnura elegans (Vander Linden, 1820)</h2>
+
+    </header>
+
+    <!-- Scrollable occurrence content -->
+    <main class="scroll-area">
+
+        <div class="container">
+
+            <img src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3066.jpg" alt="Specimen image" class="specimen-image">
+
+            <table class="data-table">
+
+                <tr><th>occurrenceID</th><td>MZURODOB00576</td></tr>
+<tr><th>basisOfRecord</th><td>PreservedSpecimen</td></tr>
+<tr><th>eventDate</th><td>1979-07-03 00:00:00</td></tr>
+<tr><th>startDayOfYear</th><td>184</td></tr>
+<tr><th>endDayOfYear</th><td>184</td></tr>
+<tr><th>year</th><td>1979</td></tr>
+<tr><th>month</th><td>7</td></tr>
+<tr><th>day</th><td>3</td></tr>
+<tr><th>verbatimEventDate</th><td>1979-07-03 00:00:00</td></tr>
+<tr><th>scientificNameAuthorship</th><td>Vander Linden, 1820</td></tr>
+<tr><th>scientificName</th><td>Ischnura elegans (Vander Linden, 1820)</td></tr>
+<tr><th>vernacularName</th><td>Blue-tailed Damselfly</td></tr>
+<tr><th>higherClassification</th><td>Animalia | Arthropoda | Insecta | Odonata | Coenagrionidae | Ischnura</td></tr>
+<tr><th>kingdom</th><td>Animalia</td></tr>
+<tr><th>phylum</th><td>Arthropoda</td></tr>
+<tr><th>class</th><td>Insecta</td></tr>
+<tr><th>order</th><td>Odonata</td></tr>
+<tr><th>family</th><td>Coenagrionidae</td></tr>
+<tr><th>genus</th><td>Ischnura</td></tr>
+<tr><th>specificEpithet</th><td>elegans</td></tr>
+<tr><th>taxonRank</th><td>species</td></tr>
+<tr><th>identifiedBy</th><td>M. Zapparoli</td></tr>
+<tr><th>nomenclaturalCode</th><td>ICZN</td></tr>
+<tr><th>decimalLatitude</th><td>42.78806</td></tr>
+<tr><th>decimalLongitude</th><td>13.76501</td></tr>
+<tr><th>geodeticDatum</th><td>WGS84</td></tr>
+<tr><th>coordinateUncertaintyInMeters</th><td>1000</td></tr>
+<tr><th>verbatimCoordinateSystem</th><td>decimal degrees</td></tr>
+<tr><th>georeferencedDate</th><td>2025-03-03 00:00:00</td></tr>
+<tr><th>georeferenceProtocol</th><td>MaNIS georeferencing guidelines</td></tr>
+<tr><th>georeferenceSources</th><td>Google Maps; historical locality labels</td></tr>
+<tr><th>georeferenceVerificationStatus</th><td>verified</td></tr>
+<tr><th>higherGeography</th><td>Europe | Italy | Abruzzo</td></tr>
+<tr><th>continent</th><td>Europe</td></tr>
+<tr><th>country</th><td>Italy</td></tr>
+<tr><th>countryCode</th><td>IT</td></tr>
+<tr><th>stateProvince</th><td>Abruzzo</td></tr>
+<tr><th>locality</th><td>Valle Fiume Salinello, presso Villa Ricci (TE)</td></tr>
+<tr><th>type</th><td>PhysicalObject</td></tr>
+<tr><th>language</th><td>ita | eng</td></tr>
+<tr><th>institutionCode</th><td>MZUR</td></tr>
+<tr><th>collectionCode</th><td>ODOB</td></tr>
+<tr><th>catalogNumber</th><td>00576</td></tr>
+<tr><th>sex</th><td>female</td></tr>
+<tr><th>individualCount</th><td>1</td></tr>
+<tr><th>organismQuantity</th><td>1</td></tr>
+<tr><th>organismQuantityType</th><td>Individuals</td></tr>
+<tr><th>samplingProtocol</th><td>wild caught</td></tr>
+<tr><th>preparations</th><td>whole organism</td></tr>
+<tr><th>lifeStage</th><td>adult</td></tr>
+
+            </table>
+
+        </div>
+
+    </main>
+
+    <!-- Fixed lower band -->
+    <footer class="fixed-footer">
+
+        <div class="footer-content">
+
+            <div class="navigation">
+
+                <a href="catalogo_gbif.html">
+                    Back to GBIF Catalog
+                </a>
+
+                <a href="index.html">
+                    Home
+                </a>
+
+            </div>
+
+            <div class="logos">
+
+                <img src="logo1.png" alt="Logo 1">
+
+                <img src="logo2.png" alt="Logo 2">
+
+            </div>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
