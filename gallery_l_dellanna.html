@@ -1,0 +1,1693 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery - L. Dell&#39;Anna</title>
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    background: white;
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    min-height: 118px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    box-sizing: border-box;
+    padding: 12px 70px 10px;
+}
+
+.home-icon {
+    position: absolute;
+    top: 18px;
+    left: 20px;
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform .2s ease, opacity .2s ease;
+}
+
+@media (hover:hover) {
+    .home-icon:hover {
+        transform: scale(1.08);
+        opacity: .82;
+    }
+}
+
+h1 {
+    text-align: center;
+    color: #821a33;
+    margin: 4px 0 10px;
+    font-size: clamp(1.9rem,3.4vw,2.5rem);
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+.navigation {
+    text-align: center;
+    margin: 0;
+}
+
+.navigation a {
+    display: inline-block;
+    padding: 8px 14px;
+    margin: 3px;
+    background: #821a33;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color .2s ease, transform .15s ease;
+}
+
+@media (hover:hover) {
+    .navigation a:hover {
+        background: #a32646;
+        transform: translateY(-1px);
+    }
+}
+
+.scroll-area {
+    position: fixed;
+    top: 118px;
+    bottom: 78px;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.gallery-content {
+    width: min(1350px,96%);
+    margin: 0 auto;
+    padding: 28px 10px 50px;
+    box-sizing: border-box;
+}
+
+.species-section {
+    margin: 0 0 42px;
+}
+
+.species-title {
+    margin: 0 0 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+    color: darkgreen;
+    font-size: 1.55rem;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.species-count {
+    color: #666;
+    font-size: .95rem;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+}
+
+.gallery-item {
+    width: 180px;
+    text-align: center;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+@media (hover:hover) {
+    .gallery-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 14px rgba(0,0,0,.08);
+    }
+}
+
+.gallery-item a {
+    color: #222;
+    text-decoration: none;
+}
+
+.gallery-item img {
+    width: 164px;
+    height: 164px;
+    object-fit: contain;
+    border: 1px solid #ccc;
+    background: #fafafa;
+}
+
+.filename {
+    margin-top: 6px;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.occurrence-id {
+    margin-top: 3px;
+    font-size: 12px;
+    color: #666;
+    overflow-wrap: anywhere;
+}
+
+.empty-gallery {
+    margin: 50px auto;
+    text-align: center;
+    color: #821a33;
+    font-size: 18px;
+}
+
+.fixed-footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,.98);
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -2px 8px rgba(0,0,0,.06);
+    padding: 8px 20px;
+    box-sizing: border-box;
+}
+
+.logos {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    box-sizing: border-box;
+}
+
+.logos img {
+    display: block;
+    width: auto;
+    height: 58px;
+    max-width: min(240px,40vw);
+    object-fit: contain;
+    flex: 0 0 auto;
+}
+
+.logos img:first-child { margin-right: auto; }
+.logos img:last-child { margin-left: auto; }
+
+@media (max-width:700px) {
+    .fixed-header {
+        min-height: 108px;
+        padding: 10px 55px 8px;
+    }
+
+    .home-icon {
+        top: 14px;
+        left: 14px;
+        width: 36px;
+        height: 36px;
+    }
+
+    h1 {
+        font-size: clamp(1.65rem,7.5vw,2.1rem);
+    }
+
+    .scroll-area {
+        top: 108px;
+        bottom: 66px;
+    }
+
+    .gallery-content {
+        width: 98%;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    .species-title {
+        font-size: 1.25rem;
+    }
+
+    .gallery-item {
+        width: 150px;
+        padding: 6px;
+    }
+
+    .gallery-item img {
+        width: 138px;
+        height: 138px;
+    }
+
+    .fixed-footer {
+        padding: 7px 12px;
+    }
+
+    .logos {
+        gap: 16px;
+    }
+
+    .logos img {
+        height: 44px;
+        max-width: 42vw;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="fixed-header">
+    <a href="index.html" aria-label="Home">
+        <img src="home.png" alt="Home" class="home-icon">
+    </a>
+
+    <h1>Gallery - L. Dell&#39;Anna</h1>
+
+    <div class="navigation">
+        <a href="l_dellanna.html">
+            Back to identifier page
+        </a>
+    </div>
+</header>
+
+<main class="scroll-area">
+    <div class="gallery-content">
+
+        
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Aeshna cyanea (Müller, 1764)
+                    <span class="species-count">
+                        — 1
+                        
+                        specimen
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00022.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_2491.jpg"
+                                alt="Aeshna cyanea (Müller, 1764) - MZURODOB00022"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_2491.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00022
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Aeshna isoceles (O.F. Müller, 1767)
+                    <span class="species-count">
+                        — 3
+                        
+                        specimens
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00846.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3348.jpg"
+                                alt="Aeshna isoceles (O.F. Müller, 1767) - MZURODOB00846"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3348.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00846
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00851.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3353.jpg"
+                                alt="Aeshna isoceles (O.F. Müller, 1767) - MZURODOB00851"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3353.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00851
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00852.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3354.jpg"
+                                alt="Aeshna isoceles (O.F. Müller, 1767) - MZURODOB00852"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3354.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00852
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Aeshna mixta (Latreille, 1805)
+                    <span class="species-count">
+                        — 1
+                        
+                        specimen
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01432.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3988.jpg"
+                                alt="Aeshna mixta (Latreille, 1805) - MZURODOB01432"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3988.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01432
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Anax ephippiger (Burmeister, 1839)
+                    <span class="species-count">
+                        — 1
+                        
+                        specimen
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB02195.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_4798.jpg"
+                                alt="Anax ephippiger (Burmeister, 1839) - MZURODOB02195"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_4798.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB02195
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Anax imperator Leach, 1815
+                    <span class="species-count">
+                        — 2
+                        
+                        specimens
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB02247.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_4851.jpg"
+                                alt="Anax imperator Leach, 1815 - MZURODOB02247"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_4851.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB02247
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB02248.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_4852.jpg"
+                                alt="Anax imperator Leach, 1815 - MZURODOB02248"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_4852.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB02248
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Boyeria irene (Fonscolombe, 1838)
+                    <span class="species-count">
+                        — 1
+                        
+                        specimen
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00832.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3334.jpg"
+                                alt="Boyeria irene (Fonscolombe, 1838) - MZURODOB00832"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3334.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00832
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Ceriagrion tenellum (Villers, 1789)
+                    <span class="species-count">
+                        — 2
+                        
+                        specimens
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00725.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3220.jpg"
+                                alt="Ceriagrion tenellum (Villers, 1789) - MZURODOB00725"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3220.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00725
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00727.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3222.jpg"
+                                alt="Ceriagrion tenellum (Villers, 1789) - MZURODOB00727"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3222.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00727
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Coenagrion castellanii (Roberts, 1948)
+                    <span class="species-count">
+                        — 2
+                        
+                        specimens
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01413.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3927.jpg"
+                                alt="Coenagrion castellanii (Roberts, 1948) - MZURODOB01413"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3927.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01413
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01414.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3928.jpg"
+                                alt="Coenagrion castellanii (Roberts, 1948) - MZURODOB01414"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3928.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01414
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Coenagrion puella (Linnaeus, 1758)
+                    <span class="species-count">
+                        — 1
+                        
+                        specimen
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01115.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3620.jpg"
+                                alt="Coenagrion puella (Linnaeus, 1758) - MZURODOB01115"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3620.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01115
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Crocothemis erythraea (Brullé, 1832)
+                    <span class="species-count">
+                        — 2
+                        
+                        specimens
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01618.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_4179.jpg"
+                                alt="Crocothemis erythraea (Brullé, 1832) - MZURODOB01618"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_4179.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01618
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01640.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_4201.jpg"
+                                alt="Crocothemis erythraea (Brullé, 1832) - MZURODOB01640"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_4201.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01640
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Ischnura elegans (Vander Linden, 1820)
+                    <span class="species-count">
+                        — 6
+                        
+                        specimens
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00513.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3003.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB00513"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3003.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00513
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00514.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3004.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB00514"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3004.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00514
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00515.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3005.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB00515"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3005.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00515
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00551.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3041.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB00551"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3041.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00551
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB02388.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_5000.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB02388"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_5000.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB02388
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB02389.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_5001.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB02389"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_5001.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB02389
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Lestes barbarus (Fabricius, 1798)
+                    <span class="species-count">
+                        — 2
+                        
+                        specimens
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00980.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3483.jpg"
+                                alt="Lestes barbarus (Fabricius, 1798) - MZURODOB00980"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3483.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00980
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00981.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3484.jpg"
+                                alt="Lestes barbarus (Fabricius, 1798) - MZURODOB00981"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3484.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00981
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Lestes virens (Charpentier, 1825)
+                    <span class="species-count">
+                        — 2
+                        
+                        specimens
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00962.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3465.jpg"
+                                alt="Lestes virens (Charpentier, 1825) - MZURODOB00962"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3465.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00962
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00963.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3466.jpg"
+                                alt="Lestes virens (Charpentier, 1825) - MZURODOB00963"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3466.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00963
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Onychogomphus forcipatus (Linnaeus, 1758)
+                    <span class="species-count">
+                        — 4
+                        
+                        specimens
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01530.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_4087.jpg"
+                                alt="Onychogomphus forcipatus (Linnaeus, 1758) - MZURODOB01530"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_4087.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01530
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01533.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_4090.jpg"
+                                alt="Onychogomphus forcipatus (Linnaeus, 1758) - MZURODOB01533"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_4090.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01533
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01534.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_4091.jpg"
+                                alt="Onychogomphus forcipatus (Linnaeus, 1758) - MZURODOB01534"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_4091.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01534
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01535.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_4092.jpg"
+                                alt="Onychogomphus forcipatus (Linnaeus, 1758) - MZURODOB01535"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_4092.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01535
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Onychogomphus uncatus (Charpentier, 1840)
+                    <span class="species-count">
+                        — 1
+                        
+                        specimen
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB02178.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_4780.jpg"
+                                alt="Onychogomphus uncatus (Charpentier, 1840) - MZURODOB02178"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_4780.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB02178
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Orthetrum brunneum (Fonscolombe, 1837)
+                    <span class="species-count">
+                        — 2
+                        
+                        specimens
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00881.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3384.jpg"
+                                alt="Orthetrum brunneum (Fonscolombe, 1837) - MZURODOB00881"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3384.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00881
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00920.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3423.jpg"
+                                alt="Orthetrum brunneum (Fonscolombe, 1837) - MZURODOB00920"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3423.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00920
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Platycnemis pennipes (Pallas, 1771)
+                    <span class="species-count">
+                        — 1
+                        
+                        specimen
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01829.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_4396.jpg"
+                                alt="Platycnemis pennipes (Pallas, 1771) - MZURODOB01829"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_4396.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01829
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Pyrrhosoma nymphula (Sulzer, 1776)
+                    <span class="species-count">
+                        — 1
+                        
+                        specimen
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00805.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3307.jpg"
+                                alt="Pyrrhosoma nymphula (Sulzer, 1776) - MZURODOB00805"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3307.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00805
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Sympetrum fonscolombii (Sélys, 1840)
+                    <span class="species-count">
+                        — 7
+                        
+                        specimens
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00260.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_2738.jpg"
+                                alt="Sympetrum fonscolombii (Sélys, 1840) - MZURODOB00260"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_2738.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00260
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00277.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_2755.jpg"
+                                alt="Sympetrum fonscolombii (Sélys, 1840) - MZURODOB00277"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_2755.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00277
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00295.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_2773.jpg"
+                                alt="Sympetrum fonscolombii (Sélys, 1840) - MZURODOB00295"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_2773.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00295
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00296.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_2774.jpg"
+                                alt="Sympetrum fonscolombii (Sélys, 1840) - MZURODOB00296"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_2774.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00296
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00297.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_2775.jpg"
+                                alt="Sympetrum fonscolombii (Sélys, 1840) - MZURODOB00297"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_2775.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00297
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00324.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_2803.jpg"
+                                alt="Sympetrum fonscolombii (Sélys, 1840) - MZURODOB00324"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_2803.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00324
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00327.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_2806.jpg"
+                                alt="Sympetrum fonscolombii (Sélys, 1840) - MZURODOB00327"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_2806.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00327
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Sympetrum striolatum (Charpentier, 1840)
+                    <span class="species-count">
+                        — 1
+                        
+                        specimen
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01984.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_4553.jpg"
+                                alt="Sympetrum striolatum (Charpentier, 1840) - MZURODOB01984"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_4553.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01984
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+        
+
+    </div>
+</main>
+
+<footer class="fixed-footer">
+    <div class="logos">
+        <img src="logo1.png" alt="Left Logo">
+        <img src="logo2.png" alt="Right Logo">
+    </div>
+</footer>
+
+</body>
+</html>

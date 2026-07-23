@@ -1,0 +1,1649 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery - C. Beltrano</title>
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    background: white;
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    min-height: 118px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    box-sizing: border-box;
+    padding: 12px 70px 10px;
+}
+
+.home-icon {
+    position: absolute;
+    top: 18px;
+    left: 20px;
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform .2s ease, opacity .2s ease;
+}
+
+@media (hover:hover) {
+    .home-icon:hover {
+        transform: scale(1.08);
+        opacity: .82;
+    }
+}
+
+h1 {
+    text-align: center;
+    color: #821a33;
+    margin: 4px 0 10px;
+    font-size: clamp(1.9rem,3.4vw,2.5rem);
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+.navigation {
+    text-align: center;
+    margin: 0;
+}
+
+.navigation a {
+    display: inline-block;
+    padding: 8px 14px;
+    margin: 3px;
+    background: #821a33;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color .2s ease, transform .15s ease;
+}
+
+@media (hover:hover) {
+    .navigation a:hover {
+        background: #a32646;
+        transform: translateY(-1px);
+    }
+}
+
+.scroll-area {
+    position: fixed;
+    top: 118px;
+    bottom: 78px;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+.gallery-content {
+    width: min(1350px,96%);
+    margin: 0 auto;
+    padding: 28px 10px 50px;
+    box-sizing: border-box;
+}
+
+.species-section {
+    margin: 0 0 42px;
+}
+
+.species-title {
+    margin: 0 0 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+    color: darkgreen;
+    font-size: 1.55rem;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.species-count {
+    color: #666;
+    font-size: .95rem;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+}
+
+.gallery-item {
+    width: 180px;
+    text-align: center;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+@media (hover:hover) {
+    .gallery-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 14px rgba(0,0,0,.08);
+    }
+}
+
+.gallery-item a {
+    color: #222;
+    text-decoration: none;
+}
+
+.gallery-item img {
+    width: 164px;
+    height: 164px;
+    object-fit: contain;
+    border: 1px solid #ccc;
+    background: #fafafa;
+}
+
+.filename {
+    margin-top: 6px;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.occurrence-id {
+    margin-top: 3px;
+    font-size: 12px;
+    color: #666;
+    overflow-wrap: anywhere;
+}
+
+.empty-gallery {
+    margin: 50px auto;
+    text-align: center;
+    color: #821a33;
+    font-size: 18px;
+}
+
+.fixed-footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,.98);
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -2px 8px rgba(0,0,0,.06);
+    padding: 8px 20px;
+    box-sizing: border-box;
+}
+
+.logos {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    box-sizing: border-box;
+}
+
+.logos img {
+    display: block;
+    width: auto;
+    height: 58px;
+    max-width: min(240px,40vw);
+    object-fit: contain;
+    flex: 0 0 auto;
+}
+
+.logos img:first-child { margin-right: auto; }
+.logos img:last-child { margin-left: auto; }
+
+@media (max-width:700px) {
+    .fixed-header {
+        min-height: 108px;
+        padding: 10px 55px 8px;
+    }
+
+    .home-icon {
+        top: 14px;
+        left: 14px;
+        width: 36px;
+        height: 36px;
+    }
+
+    h1 {
+        font-size: clamp(1.65rem,7.5vw,2.1rem);
+    }
+
+    .scroll-area {
+        top: 108px;
+        bottom: 66px;
+    }
+
+    .gallery-content {
+        width: 98%;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    .species-title {
+        font-size: 1.25rem;
+    }
+
+    .gallery-item {
+        width: 150px;
+        padding: 6px;
+    }
+
+    .gallery-item img {
+        width: 138px;
+        height: 138px;
+    }
+
+    .fixed-footer {
+        padding: 7px 12px;
+    }
+
+    .logos {
+        gap: 16px;
+    }
+
+    .logos img {
+        height: 44px;
+        max-width: 42vw;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="fixed-header">
+    <a href="index.html" aria-label="Home">
+        <img src="home.png" alt="Home" class="home-icon">
+    </a>
+
+    <h1>Gallery - C. Beltrano</h1>
+
+    <div class="navigation">
+        <a href="c_beltrano.html">
+            Back to identifier page
+        </a>
+    </div>
+</header>
+
+<main class="scroll-area">
+    <div class="gallery-content">
+
+        
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Ceriagrion tenellum (Villers, 1789)
+                    <span class="species-count">
+                        — 7
+                        
+                        specimens
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00787.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3289.jpg"
+                                alt="Ceriagrion tenellum (Villers, 1789) - MZURODOB00787"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3289.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00787
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00789.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3291.jpg"
+                                alt="Ceriagrion tenellum (Villers, 1789) - MZURODOB00789"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3291.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00789
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00790.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3292.jpg"
+                                alt="Ceriagrion tenellum (Villers, 1789) - MZURODOB00790"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3292.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00790
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00791.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3293.jpg"
+                                alt="Ceriagrion tenellum (Villers, 1789) - MZURODOB00791"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3293.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00791
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00792.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3294.jpg"
+                                alt="Ceriagrion tenellum (Villers, 1789) - MZURODOB00792"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3294.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00792
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00793.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3295.jpg"
+                                alt="Ceriagrion tenellum (Villers, 1789) - MZURODOB00793"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3295.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00793
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00794.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3296.jpg"
+                                alt="Ceriagrion tenellum (Villers, 1789) - MZURODOB00794"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3296.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00794
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Ischnura elegans (Vander Linden, 1820)
+                    <span class="species-count">
+                        — 49
+                        
+                        specimens
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00537.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3027.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB00537"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3027.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00537
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00538.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3028.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB00538"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3028.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00538
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00539.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3029.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB00539"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3029.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00539
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00540.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3030.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB00540"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3030.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00540
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00541.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3031.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB00541"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3031.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00541
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00542.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3032.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB00542"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3032.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00542
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00543.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3033.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB00543"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3033.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00543
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00544.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3034.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB00544"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3034.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00544
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01314.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3824.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01314"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3824.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01314
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01315.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3825.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01315"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3825.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01315
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01316.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3826.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01316"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3826.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01316
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01317.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3827.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01317"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3827.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01317
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01318.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3828.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01318"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3828.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01318
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01319.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3829.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01319"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3829.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01319
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01320.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3830.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01320"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3830.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01320
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01321.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3831.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01321"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3831.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01321
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01322.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3832.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01322"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3832.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01322
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01323.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3833.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01323"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3833.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01323
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01324.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3834.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01324"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3834.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01324
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01325.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3835.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01325"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3835.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01325
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01326.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3837.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01326"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3837.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01326
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01327.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3838.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01327"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3838.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01327
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01328.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3839.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01328"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3839.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01328
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01329.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3840.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01329"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3840.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01329
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01330.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3841.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01330"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3841.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01330
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01331.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3842.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01331"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3842.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01331
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01332.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3843.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01332"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3843.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01332
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01333.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3844.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01333"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3844.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01333
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01334.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3845.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01334"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3845.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01334
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01335.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3846.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01335"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3846.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01335
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01336.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3847.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01336"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3847.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01336
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01337.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3849.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01337"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3849.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01337
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01338.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3850.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01338"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3850.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01338
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01339.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3851.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01339"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3851.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01339
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01340.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3852.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01340"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3852.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01340
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01341.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3853.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01341"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3853.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01341
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01342.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3854.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01342"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3854.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01342
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01343.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3855.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01343"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3855.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01343
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01344.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3856.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01344"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3856.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01344
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01345.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3857.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01345"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3857.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01345
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01346.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3859.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01346"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3859.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01346
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01347.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3860.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01347"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3860.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01347
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01348.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3861.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01348"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3861.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01348
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01349.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3862.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01349"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3862.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01349
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01350.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3863.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01350"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3863.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01350
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01351.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3864.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01351"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3864.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01351
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01352.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3865.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01352"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3865.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01352
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01353.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3866.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01353"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3866.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01353
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB01354.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_3867.jpg"
+                                alt="Ischnura elegans (Vander Linden, 1820) - MZURODOB01354"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_3867.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB01354
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+            <section class="species-section">
+
+                <h2 class="species-title">
+                    Sympetrum fonscolombii (Sélys, 1840)
+                    <span class="species-count">
+                        — 2
+                        
+                        specimens
+                        
+                    </span>
+                </h2>
+
+                <div class="gallery-grid">
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00319.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_2797.jpg"
+                                alt="Sympetrum fonscolombii (Sélys, 1840) - MZURODOB00319"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_2797.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00319
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                    <div class="gallery-item">
+                        <a href="MZURODOB00320.html">
+
+                            <img
+                                src="https://sapienza-bbcd.github.io/MZUR-Zoology-Odonata/DSC_2798.jpg"
+                                alt="Sympetrum fonscolombii (Sélys, 1840) - MZURODOB00320"
+                                loading="lazy"
+                            >
+
+                            <div class="filename">
+                                DSC_2798.jpg
+                            </div>
+
+                            <div class="occurrence-id">
+                                MZURODOB00320
+                            </div>
+
+                        </a>
+                    </div>
+
+                    
+
+                </div>
+
+            </section>
+
+            
+
+        
+
+    </div>
+</main>
+
+<footer class="fixed-footer">
+    <div class="logos">
+        <img src="logo1.png" alt="Left Logo">
+        <img src="logo2.png" alt="Right Logo">
+    </div>
+</footer>
+
+</body>
+</html>
