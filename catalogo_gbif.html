@@ -46,7 +46,7 @@
         .scroll-area {
             position: fixed;
             top: 105px;
-            bottom: 85px;
+            bottom: 78px;
             left: 0;
             right: 0;
             overflow-y: auto;
@@ -75,6 +75,10 @@
         .dropdown {
             width: 60px;
             font-size: 20px;
+            padding: 6px 4px;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            background: white;
         }
 
         button {
@@ -85,10 +89,14 @@
             border: none;
             cursor: pointer;
             border-radius: 8px;
+            transition: background-color 0.2s ease, transform 0.15s ease;
         }
 
-        button:hover {
-            background-color: #c54c00;
+        @media (hover: hover) {
+            button:hover {
+                background-color: #a32646;
+                transform: translateY(-1px);
+            }
         }
 
         .fixed-footer {
@@ -97,34 +105,65 @@
             right: 0;
             bottom: 0;
             z-index: 1000;
-            background: white;
+            background: rgba(255, 255, 255, 0.98);
             border-top: 1px solid #ddd;
             box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.06);
-            padding: 10px 24px;
+            padding: 8px 20px;
             box-sizing: border-box;
         }
 
         .logos {
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: min(1200px, 96%);
-            margin: 0 auto;
+            gap: 30px;
+            box-sizing: border-box;
         }
 
         .logos img {
-            width: 178.5px;
-            height: 47px;
+            display: block;
+            width: auto;
+            height: 58px;
+            max-width: min(240px, 40vw);
             object-fit: contain;
+            flex: 0 0 auto;
+        }
+
+        .logos img:first-child {
+            margin-right: auto;
+        }
+
+        .logos img:last-child {
+            margin-left: auto;
         }
 
         .home-icon {
-            width: 40px;
-            height: auto;
+
             position: absolute;
-            top: 20px;
+
+            top: 18px;
+
             left: 20px;
+
+            width: 42px;
+
+            height: 42px;
+
+            object-fit: contain;
+
             cursor: pointer;
+
+            transition: transform 0.2s ease, opacity 0.2s ease;
+
+        }
+
+
+        @media (hover: hover) {
+            .home-icon:hover {
+                transform: scale(1.08);
+                opacity: 0.82;
+            }
         }
 
         #result {
@@ -134,7 +173,9 @@
 
         h2 {
             color: #821a33;
-            font-size: 54px;
+            font-size: clamp(2.1rem, 4.2vw, 3.4rem);
+            font-weight: 600;
+            line-height: 1.1;
             text-align: center;
             margin: 22px 70px 12px;
         }
@@ -146,24 +187,32 @@
 
             .scroll-area {
                 top: 90px;
-                bottom: 76px;
+                bottom: 66px;
             }
 
             h2 {
-                font-size: 38px;
-                margin-top: 22px;
+                font-size: clamp(1.9rem, 8vw, 2.4rem);
+                margin: 20px 54px 10px;
             }
 
             .home-icon {
-                width: 34px;
                 top: 16px;
                 left: 14px;
+                width: 36px;
+                height: 36px;
+            }
+
+            .fixed-footer {
+                padding: 7px 12px;
+            }
+
+            .logos {
+                gap: 16px;
             }
 
             .logos img {
-                width: 130px;
-                height: auto;
-                max-height: 50px;
+                height: 44px;
+                max-width: 42vw;
             }
         }
 
